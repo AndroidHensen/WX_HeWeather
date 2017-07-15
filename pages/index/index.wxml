@@ -1,0 +1,38 @@
+<!--index.wxml-->
+<image src="../../assets/day.jpg" class="bg"></image>
+<view class="container">
+  <view class="nowWeather">
+    <view class="city w">{{city}} {{district}}</view>
+    <view class="road w">{{street}}</view>
+    <view class="temp w">{{tmp}}°</view>
+    <view class="weather w">{{txt}} | 空气 {{qlty}}</view>
+  </view>
+  <view class="weatherDetail">
+    <view class="">
+      <view class="w center">{{dir}}</view>
+      <view wx:if="{{sc}} == '微风'" class="f50 b w center">微风</view>
+      <view wx:else class="f50 b w center">{{sc}}级</view>
+    </view>
+    <view class="l"></view>
+    <view class="">
+      <view class="w center">相对湿度</view>
+      <view class="f50 b w center">{{hum}}%</view>
+    </view>
+    <view class="l"></view>
+    <view class="">
+      <view class="w center">体感温度</view>
+      <view class="f50 b w center">{{fl}}°</view>
+    </view>
+  </view>
+</view>
+
+<view wx:for="{{daily_forecast}}" wx:for-index="i" wx:for-item="item">
+  <view class="hor forcast">
+    <view class="center">{{day[i]}}</view>
+    <view class="hor">
+      <image src="../../assets/icons/{{item.cond.code_d}}.png" class="img"></image>
+      <view class="center">{{item.cond.txt_d}}|{{qlty}}</view>
+    </view>
+    <view class="center">{{item.tmp.min}}°/ {{item.tmp.max}}°</view>
+  </view>
+</view>
